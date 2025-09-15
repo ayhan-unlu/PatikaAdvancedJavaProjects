@@ -9,25 +9,43 @@ public class Calculator {
 choice = Helper.scanInput();
 switch(choice){
 case 1:
-s
+BasicCalculation.sum();
 break;
+
 case 2:
+BasicCalculation.subtract();
 break;
+
 case 3:
+BasicCalculation.multiple();
 break;
+
 case 4:
+BasicCalculation.divide();
 break;
+
 case 5:
+Power.power();
 break;
+
 case 6:
+RootSquare.rootSquare();
 break;
+
 case 7:
+Turev.turev();
 break;
+
 case 8:
+Integral.integral();
 break;
+
 case 9:
+Mode.mode();
 break;
+
 case 10:
+MutlakDeger.mutlakdeger();
 break;
 
 System.out.println("a");
