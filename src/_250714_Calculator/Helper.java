@@ -78,13 +78,13 @@ public class Helper {
                 System.out.println("Exponentiation is " + calculation.exponentiation(getInputNumbers(inputNumbers)));
                 mainMenu();
             case 6:
-                System.out.println("The Root Square is " + calculation.squareRoot(getInputNumber()));
+                System.out.println("The Square Root is " + calculation.squareRoot(getInputNumber()));
                 mainMenu();
             case 7:
                 System.out.println("The Derivative is " + calculation.derivative(getInputNumber()));
                 mainMenu();
             case 8:
-                System.out.println("The Integral is not solved yet" + calculation.integral(getInputNumber()));
+                System.out.println(calculation.integral(getInputNumbers(inputNumbers)));
                 mainMenu();
             case 9:
                 System.out.println("The factorial is " + calculation.factorial(getInputNumber()));
