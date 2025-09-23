@@ -1,6 +1,4 @@
-package _250714_Calculator;
-
-import java.util.Scanner;
+package _250923_Calculator;
 
 public class MainCalculator {
     public static void main(String[] args) {
