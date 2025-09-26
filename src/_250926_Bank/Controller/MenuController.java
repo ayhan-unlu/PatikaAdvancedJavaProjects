@@ -17,6 +17,8 @@ public class MenuController {
     int userSelection;
     User currentUser;
 
+    BankController bankcontroller = new BankController();
+
     public void showMainMenu() {
         while (true) {
             mainMenu.displayMainMenu();
@@ -47,10 +49,15 @@ public class MenuController {
 
 
     public void showAccountMenu() {
-        System.out.println("Welcome to the Account Menu");
-        //  accountMenu.displayAccountMenu(currentUser);
-        //userSelection = getUserSelection();
-
+        while (true) {
+            accountMenu.displayAccountMenu(currentUser);
+            userSelection = getUserSelection();
+            if (userSelection == 0) {
+                break;
+            } else {
+                handleAccountSelection(userSelection);
+            }
+        }
     }
 
 
@@ -77,4 +84,33 @@ public class MenuController {
                 break;
         }
     }
+
+    public void handleAccountSelection(int userSelection) {
+        switch (userSelection) {
+            case 1:
+                MessageHelper.showUserBalanceMessage(currentUser);                //   showAccountMenu();
+                break;
+            case 2:
+                MessageHelper.showUserBalanceMessage(currentUser);
+                bankcontroller.transferDeposit(currentUser);
+                break;
+            case 3:
+                MessageHelper.showUserBalanceMessage(currentUser);
+                MessageHelper.showUserCreditDebtMessage(currentUser);
+                bankcontroller.payCreditDebt(currentUser);
+                break;
+            case 4:
+                MessageHelper.showUserBalanceMessage(currentUser);
+                MessageHelper.showUserCreditCardDebtMessage(currentUser);
+                bankcontroller.payCreditCardDebt(currentUser);
+                break;
+            case 0:
+                MessageHelper.showMessage("Returning to the Main Menu");
+                break;
+            default:
+                MessageHelper.showMessage("Invalid Selection");
+                break;
+        }
+    }
+
 }

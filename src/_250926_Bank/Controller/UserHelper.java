@@ -95,4 +95,12 @@ public class UserHelper {
         }
         return null;
     }
+
+    public static User fetchUser(String nationalIdNumber){
+        for (User user : userList){
+            if(user.getNationalIdNumber().equals(nationalIdNumber)){
+                return user;
+            }
+        }return null;
+    }
 }
