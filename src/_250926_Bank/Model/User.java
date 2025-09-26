@@ -4,16 +4,20 @@ public class User {
     private String nationalIdNumber;
     private String birthDate;
     private double balance;
+    private double creditDebt;
+    private double creditCardDebt;
     private String password;
 
     public User() {
 
     }
 
-    public User(String nationalIdNumber, String birthDate, String password) {
+    public User(String nationalIdNumber, String birthDate, double creditDebt, double creditCardDebt, String password) {
         this.nationalIdNumber = nationalIdNumber;
         this.birthDate = birthDate;
         this.balance = 0;
+        this.creditDebt = creditDebt;
+        this.creditCardDebt = creditCardDebt;
         this.password = password;
     }
 
@@ -40,6 +44,22 @@ public class User {
 
     public void setBalance(double balance) {
         this.balance = balance;
+    }
+
+    public double getCreditDebt() {
+        return creditDebt;
+    }
+
+    public void setCreditDebt(double creditDebt) {
+        this.creditDebt = creditDebt;
+    }
+
+    public double getCreditCardDebt() {
+        return creditCardDebt;
+    }
+
+    public void setCreditCardDebt(double creditCardDebt) {
+        this.creditCardDebt = creditCardDebt;
     }
 
     public String getPassword() {
