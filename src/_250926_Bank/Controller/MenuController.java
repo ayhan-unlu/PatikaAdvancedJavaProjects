@@ -62,8 +62,7 @@ public class MenuController {
 
 
     public int getUserSelection() {
-        int selection = scanner.nextInt();
-        scanner.nextLine();
+        int selection = (Integer)Integer.parseInt(scanner.nextLine());
         return selection;
     }
 

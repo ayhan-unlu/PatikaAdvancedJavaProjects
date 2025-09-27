@@ -1,1 +1,1 @@
-[{"nationalIdNumber":"1","birthDate":"2","balance":0.0,"password":"1"}]
+[{"nationalIdNumber":"0000","birthDate":"1111","balance":960000.0,"creditDebt":1000.0,"creditCardDebt":1000.0,"password":"0000"},{"nationalIdNumber":"1111","birthDate":"1979","balance":38700.0,"creditDebt":500.0,"creditCardDebt":200.0,"password":"1111"}]

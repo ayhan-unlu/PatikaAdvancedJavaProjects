@@ -8,9 +8,7 @@ import java.util.Scanner;
 
 public class UserHelper {
     static Scanner scanner = new Scanner(System.in);
-    static List<User> userList = new ArrayList<>();
-
-
+    static List<User> userList = new JsonReader().readUserListFromFile();
 
 
     public static void getSignUpInput() {
@@ -24,8 +22,8 @@ public class UserHelper {
 
             if (validatePassword(birthDate, password)) {
                 System.out.println("You have successfully registered");
-                addUserToUserList(new User(nationalIdNumber, birthDate, 0, 0, password));
-
+                addUserToUserList(new User(nationalIdNumber, birthDate, 1000, 1000, password));
+                writeUserListToFile(userList);
             } else {
                 System.out.println("Your password contains your birthday and it is not allowed");
             }
@@ -58,12 +56,29 @@ public class UserHelper {
     public static User createDemoUser() {
         User user = new User("0000", "1111", 1000, 1000, "0000");
         user.setBalance(1000000);
-        addUserToUserList(user);
+        if(isNotCreatedBefore(user)){addUserToUserList(user);
+        writeUserListToFile(userList);}
         return user;
+    }
+
+    public static boolean isNotCreatedBefore(User user) {
+        for(User foundUser : userList){
+            if(user.getNationalIdNumber().equals(foundUser.getNationalIdNumber())){
+                return false;
+            }
+        }return true;
     }
 
     public static void addUserToUserList(User user) {
         userList.add(user);
+    }
+
+    public static void writeUserListToFile(List<User> userList){
+        JsonWriter.writeUserListToFile(userList);
+    }
+
+    public static void updateUserListOnFile(){
+        writeUserListToFile(userList);
     }
 
     public static boolean isNationalIdNumberInList(String nationalIdNumber) {

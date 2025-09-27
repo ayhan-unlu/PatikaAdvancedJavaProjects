@@ -1,5 +1,7 @@
 package _250926_Bank.Model;
 
+import _250926_Bank.Controller.JsonWriter;
+
 public class User {
     private String nationalIdNumber;
     private String birthDate;
@@ -7,6 +9,9 @@ public class User {
     private double creditDebt;
     private double creditCardDebt;
     private String password;
+
+    transient ThreadLocal sessionData;
+    transient String tempMenuChoice;
 
     public User() {
 

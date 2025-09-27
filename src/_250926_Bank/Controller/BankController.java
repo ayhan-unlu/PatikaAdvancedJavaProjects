@@ -21,6 +21,7 @@ public class BankController {
             currentUser.setBalance(currentUser.getBalance() - transferAmount);
             currentUser.setCreditCardDebt(currentUser.getCreditCardDebt() - transferAmount);
             MessageHelper.showSuccessfulCreditCardDebtPaymentMessage(currentUser, transferAmount);
+            UserHelper.updateUserListOnFile();
         } else {
             MessageHelper.showTransferFailedMessage(currentUser);
         }
@@ -37,6 +38,7 @@ public class BankController {
             currentUser.setBalance(currentUser.getBalance() - transferAmount);
             currentUser.setCreditDebt(currentUser.getCreditDebt() - transferAmount);
             MessageHelper.showSuccessfulCreditDebtPaymentMessage(currentUser, transferAmount);
+            UserHelper.updateUserListOnFile();
         } else {
             MessageHelper.showTransferFailedMessage(currentUser);
         }
@@ -46,14 +48,14 @@ public class BankController {
     public void transferDeposit(User currentUser) {
         receiverNationalIdNumber = ScannerHelper.getReceiverNationalIdNumberFromSender();
         receiverUser = UserHelper.fetchUser(receiverNationalIdNumber);
-        if ((receiverUser != null) && (!receiverUser.getNationalIdNumber().equals(currentUser.getNationalIdNumber()))) {
+        if (receiverUser == null) {
+            System.out.println("The receiver is not in the Bank List");
+        } else if (receiverUser.getNationalIdNumber().equals(currentUser.getNationalIdNumber())) {
+            MessageHelper.showMessage("You cant transfer to yourself");
+        } else  {
             System.out.println("Receiver is authenticated");
             transferAmount = ScannerHelper.getTransferAmountFromSender();
             transferFunds(currentUser, receiverUser, transferAmount);
-        } else if (receiverUser.getNationalIdNumber().equals(currentUser.getNationalIdNumber())) {
-            MessageHelper.showMessage("You cant transfer to yourself");
-        } else {
-            System.out.println("The receiver is not in the Bank List");
         }
     }
 
@@ -63,6 +65,7 @@ public class BankController {
             currentUser.setBalance(currentUser.getBalance() - transferAmount);
             receiverUser.setBalance(receiverUser.getBalance() + transferAmount);
             MessageHelper.showTransferSuccessfulMessage(currentUser, receiverUser, transferAmount);
+            UserHelper.updateUserListOnFile();
         } else {
             MessageHelper.showTransferFailedMessage(currentUser);
         }
