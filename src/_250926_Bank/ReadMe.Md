@@ -32,11 +32,11 @@
 ## UML Diagrams
 ### Menu UML
 
->>![img.png](src/_250926_Bank/MenuUml.png)
+>>![img.png](MenuUml.png)
 
 ### Controller Helper UML
 
->>![ControllerHelperUml.png](src/_250926_Bank/ControllerHelperUml.png)
+>>![ControllerHelperUml.png](ControllerHelperUml.png)
 ## License
 
 This project is free to use, modify, and distribute.  
